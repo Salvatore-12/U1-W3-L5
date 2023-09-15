@@ -312,10 +312,18 @@ container.appendChild(table)
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
+function printTextInTdElements(){
+const tdElement=document.querySelectorAll("td")
 
+tdElement.forEach(td=>{
+console.log(td.textContent)})
+}
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
+const allLinks=document.querySelectorAll("a")
+allLinks.forEach(link0=>{
+link0.style.backgroundColor="red"});
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
@@ -517,28 +525,37 @@ const onlyInLastMillennium = function (movies) {
 
 }
 // esercizio 17
-function searchByTitle(searchString, movies){
-const matchingMovies=movies.filter(movie=>{
-return movie.title.toLowerCase().icludes(searchString.toLowerCase());
-})
-const searchResult=searchByTitle("film",movies);
-console.log(searchResult)
+function searchByTitle(searchString, movies) {
+  const matchingMovies = movies.filter(movie => {
+    return movie.title.toLowerCase().icludes(searchString.toLowerCase());
+  })
+  const searchResult = searchByTitle("film", movies);
+  console.log(searchResult)
 }
 // esercizio 18
-function searchAndDivide(searchString,movies){
-const match=[]
-const unmatch=[]
+function searchAndDivide(searchString, movies) {
+  const match = []
+  const unmatch = []
 
-for(const movie of movies) {
-if((movie.Title.toLowerCase().includes(searchString.toLowerCase()))){
-match.push(movie)
-} else {
-unmatch.push(movie)
-}
+  for (const movie of movies) {
+    if ((movie.Title.toLowerCase().includes(searchString.toLowerCase()))) {
+      match.push(movie)
+    } else {
+      unmatch.push(movie)
+    }
 
+  }
+  return { match, unmatch };
 }
-return {match,unmatch};
-}
-const searchResult1=searchAndDivide("film",movies);
+const searchResult1 = searchAndDivide("film", movies);
 console.log(searchResult1.match)
 console.log(searchResult1.unmatch)
+// esrecizio 19
+function removeIndex(index, movies) {
+  if (index >= 0 && index < movies.length) {
+    movies.splice(index, 1)
+  }
+  return movies
+}
+const updateMovies=removeIndex(1,movies)
+console.log(updateMovies)
